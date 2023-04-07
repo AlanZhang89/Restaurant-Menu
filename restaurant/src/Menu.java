@@ -1,16 +1,17 @@
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
+
 public class Menu {
     private List<MenuItem> items;
-    private Date lastUpdated;
+    private String lastUpdated;
 
     public Menu() {
         this.items = new ArrayList<>();
-        this.lastUpdated = new Date();
+        this.lastUpdated="";
     }
 
-    public Menu(List<MenuItem> items, Date lastUpdated) {
+    public Menu(List<MenuItem> items,String lastUpdated) {
         this.items = items;
         this.lastUpdated = lastUpdated;
     }
@@ -27,11 +28,23 @@ public class Menu {
         return items;
     }
 
-    public Date getLastUpdated() {
+    public String getLastUpdated() {
         return lastUpdated;
     }
 
-    public void setLastUpdated(Date date) {
-        this.lastUpdated = date;
+    public void setLastUpdated() {
+        Scanner inputUpdateDate = new Scanner(System.in);
+        System.out.println("Type Update month :");
+        String month = inputUpdateDate.next();
+        System.out.println("Type Update day :");
+        String day = inputUpdateDate.next();
+        System.out.println("Type Update year :");
+        String year = inputUpdateDate.next();
+        this.lastUpdated = month + "/" + day + "/" + year;
+    }
+    public void printMenu (Menu foodType){
+        for(MenuItem item : foodType.getItems()){
+            System.out.println(item.toString() );
+        }
     }
 }
